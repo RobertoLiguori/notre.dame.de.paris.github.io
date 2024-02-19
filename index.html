@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagina Audio con Marcatori</title>
+    <style>
+        #audioContainer {
+            margin-bottom: 20px;
+        }
+        .audio-link {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="audioContainer">
+        <audio id="myAudio" controls>
+            <!-- <source src="./Filato (Fino ali in gabbia).mp3" type="audio/mp3"> -->
+            <source src="./Filato (Fino ali in gabbia).mp3" type="audio/mp3">
+            Il tuo browser non supporta l'elemento audio.
+        </audio>
+    </div>
+
+    <a class="audio-link" data-time="60">Clandestini (1:00)</a><br>
+    <a class="audio-link" data-time="195">La festa dei folli (3:15)</a><br>
+    <a class="audio-link" data-time="380">Bella (6:20)</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('myAudio');
+            var links = document.getElementsByClassName('audio-link');
+
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function() {
+                    var time = this.getAttribute('data-time');
+                    audio.currentTime = time;
+                    audio.play();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
